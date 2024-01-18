@@ -1,4 +1,4 @@
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime  # Add import for datetime
 
 DAYS_IN_WEEK = 7
 
@@ -13,7 +13,7 @@ def get_next_week_start():
 def get_birthdays_per_week(users):
     today = date.today()
     next_week_start = get_next_week_start()
-    next_week_end = next_week_start + timedelta(days=DAYS_IN_WEEK + 2)  # Додано 2 дні для врахування вихідних
+    next_week_end = next_week_start + timedelta(days=DAYS_IN_WEEK + 2)  # Add 2 days to account for weekends
 
     birthdays = {day: [] for day in ["Monday ", "Tuesday ", "Wednesday ", "Thursday ", "Friday ", "Saturday ", "Sunday "]}
 
@@ -33,25 +33,25 @@ def get_birthdays_per_week(users):
     return {day: users for day, users in birthdays.items() if users}
 
 def test_all_future_birthdays_no_weekend():
-    # Реалізуйте тест, коли усі дні народження користувачів є у майбутньому і не впадають на вихідні.
+    # Implement the test when all users' birthdays are in the future and not on weekends
     pass
 
 def test_some_birthdays_on_weekend():
-    # Реалізуйте тест, коли дні народження деяких користувачів випадають на вихідні.
+    # Implement the test when some users' birthdays fall on weekends
     pass
 
 def test_some_birthdays_passed_this_year():
-    # Реалізуйте тест, коли деякі дні народження користувачів вже минули у цьому році.
+    # Implement the test when some users' birthdays have already passed this year
     pass
 
 def test_no_users():
-    # Реалізуйте тест, коли у списку немає користувачів.
+    # Implement the test when the list of users is empty
     pass
 
 def test_all_birthdays_passed_this_year():
-    # Реалізуйте тест, коли всі дні народження користувачів вже минули у цьому році.
+    # Implement the test when all users' birthdays have already passed this year
     pass
- 
+
 def print_birthday_result(result):
     for day, users in result.items():
         if users:
@@ -62,7 +62,7 @@ def print_birthday_result(result):
         else:
             print(f"У {day}, немає днів народження.\n")
 
-# Тести та приклади використання залишаються незмінними
+# Tests and examples remain unchanged
 if __name__ == "__main__":
     test_all_future_birthdays_no_weekend()
     test_some_birthdays_on_weekend()
@@ -71,14 +71,13 @@ if __name__ == "__main__":
     test_all_birthdays_passed_this_year()
     print("Усі тести пройдено!")
 
-    # Приклад використання
+    # Example usage
     users = [
         {"name": "Bill Gates", "birthday": datetime(1955, 10, 28).date()},
         {'name': 'Bob', 'birthday': datetime(2000, 3, 7).date()},
         {'name': 'Charlie', 'birthday': datetime(2010, 12, 15).date()},
         {'name': 'David', 'birthday': datetime(2017, 9, 1).date()}
-        # Додайте інших користувачів за потреби
+        # Add other users as needed
     ]
     result = get_birthdays_per_week(users)
     print_birthday_result(result)
-    
