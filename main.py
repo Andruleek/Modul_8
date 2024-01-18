@@ -3,7 +3,7 @@ from datetime import date, timedelta
 DAYS_IN_WEEK = 7
 
 def get_day_of_week(date_obj):
-    days = ["Понеділок", "Вівторок", "Середа", "Четвер", "П'ятниця", "Субота", "Неділя"]
+    days = ["Monday ", "Tuesday ", "Wednesday ", "Thursday ", "Friday ", "Saturday ", "Sunday "]
     return days[date_obj.weekday()]
 
 def get_next_week_start():
@@ -15,7 +15,7 @@ def get_birthdays_per_week(users):
     next_week_start = get_next_week_start()
     next_week_end = next_week_start + timedelta(days=DAYS_IN_WEEK + 2)  # Додано 2 дні для врахування вихідних
 
-    birthdays = {day: [] for day in ["Понеділок", "Вівторок", "Середа", "Четвер", "П'ятниця", "Субота", "Неділя"]}
+    birthdays = {day: [] for day in ["Monday ", "Tuesday ", "Wednesday ", "Thursday ", "Friday ", "Saturday ", "Sunday "]}
 
     for user in users:
         user_birthday = user['birthday'].replace(year=today.year)
@@ -51,7 +51,7 @@ def test_no_users():
 def test_all_birthdays_passed_this_year():
     # Реалізуйте тест, коли всі дні народження користувачів вже минули у цьому році.
     pass
-
+ 
 def print_birthday_result(result):
     for day, users in result.items():
         if users:
@@ -73,11 +73,12 @@ if __name__ == "__main__":
 
     # Приклад використання
     users = [
-        {'name': 'Alice', 'birthday': date.today().replace(month=1, day=3)},
-        {'name': 'Bob', 'birthday': date.today().replace(month=12, day=28)},
-        {'name': 'Charlie', 'birthday': date.today().replace(month=12, day=29)},
-        {'name': 'David', 'birthday': date.today().replace(month=1, day=6)}
+        {"name": "Bill Gates", "birthday": datetime(1955, 10, 28).date()},
+        {'name': 'Bob', 'birthday': datetime(2000, 3, 7).date()},
+        {'name': 'Charlie', 'birthday': datetime(2010, 12, 15).date()},
+        {'name': 'David', 'birthday': datetime(2017, 9, 1).date()}
         # Додайте інших користувачів за потреби
     ]
     result = get_birthdays_per_week(users)
     print_birthday_result(result)
+    
